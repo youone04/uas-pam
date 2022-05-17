@@ -17,3 +17,9 @@ seperi laptop dan HP
 
 Untuk menangangi asyncronus disini developer menggunakan library yaitu redux thunk
 untuk menghandle pemanggilan api yang berjalan secara asyncronus
+
+## car instalasi
+
+1. git clone dari github
+2. npm install
+3. npm start/ expo start
