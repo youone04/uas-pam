@@ -25,9 +25,10 @@ const Card = (props) => {
               elevation: 5,
               display: "flex",
               width: "95%",
-              height: 320,
+              height: 'auto',
               margin: 10,
               padding: 5,
+              paddingBottom:10
             }}
           >
             <Image
