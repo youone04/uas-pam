@@ -9,7 +9,6 @@ const ProductDetail = (props) => {
   useEffect(() => {
     props.getDataActionDetail(id);
   }, [id, props.getDataActionDetail]);
-  console.log(props.data.productDetail);
 
   return (
     <>
@@ -67,7 +66,7 @@ const ProductDetail = (props) => {
               // onPress={() => handleDetail(products.id)}
               style={{ fontWeight: "bold", color: "blue" }}
             >
-              Harga : {props.data.productDetail.price}
+              Harga : {`${props.data.productDetail.price} $`}
             </Text>
             <Text
               // onPress={() => handleDetail(products.id)}
