@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { getDataAction , getDataActionDetail } from "../../redux/actions";
 import { connect } from "react-redux";
 import Navbar from "../../Components/Navbar";
@@ -6,9 +6,23 @@ import Card from "../../Components/Card";
 import { View, Text } from "react-native";
 
 const Product = (props) => {
+  const [pageCurrent, setpageCurrent] = useState(1)
+
+  const handlePreviousPage = () => {
+    
+    setpageCurrent(pageCurrent - 1<1?1:pageCurrent - 1)
+}
+
+const handleNextPage = () => {
+    setpageCurrent(pageCurrent + 1)
+
+    
+}
+
+
   useEffect(() => {
-    props.getDataAction();
-  }, [props.getDataAction]);
+    props.getDataAction(pageCurrent);
+  }, [props.getDataAction,pageCurrent]);
 
   return (
     <>
@@ -26,7 +40,14 @@ const Product = (props) => {
           <Text style={{ color: "red", fontSize: 30 }}>{props.data.error}</Text>
         </View>
       ) : (
-        <Card navigation={props.navigation} detail={props.getDataActionDetail} data={props.data.product} />
+        <Card 
+        total = {props.data.product.total}
+        pageCurrent={pageCurrent}
+        handleNextPage={handleNextPage}
+        handlePreviousPage={handlePreviousPage}
+        navigation={props.navigation} 
+        detail={props.getDataActionDetail} 
+        data={props.data.product} />
       )}
     </>
   );
@@ -38,7 +59,7 @@ const reduxState = (state) => ({
 
 const reduxDispatch = () => (dispatch) => {
   return {
-    getDataAction: () => dispatch(getDataAction()),
+    getDataAction: (pageCurrent) => dispatch(getDataAction(pageCurrent)),
     getDataActionDetail: (id) => dispatch(getDataActionDetail(id))
   };
 };

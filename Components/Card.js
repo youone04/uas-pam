@@ -1,12 +1,11 @@
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const Card = (props) => {
-
   const handleDetail = (id) => {
-    props.navigation.push('Detail',{
-      id
-    })
-  }
+    props.navigation.push("Detail", {
+      id,
+    });
+  };
 
   return (
     <>
@@ -48,14 +47,47 @@ const Card = (props) => {
               <Text>{products.description}</Text>
             </View>
             <View style={{ marginTop: 8 }}>
-                <Text onPress={() => handleDetail(products.id)} style={{ fontWeight: "bold", color: "blue" }}>
-                  Lihat detail
-                </Text>
+              <Text
+                onPress={() => handleDetail(products.id)}
+                style={{ fontWeight: "bold", color: "blue" }}
+              >
+                Lihat detail
+              </Text>
             </View>
           </View>
         );
       })}
+
+      <View style={styles.headerStyle}>
+        {/* <View></View> */}
+        <TouchableOpacity
+          style={{ marginRight: 4 }}
+          onPress={() => props.handlePreviousPage()}
+        >
+          <Text style={{fontSize: 15, fontWeight:'bold'}}>Prev</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ marginLeft: 4 }}
+          onPress={() => props.handleNextPage()}
+        >
+          <Text style={{fontSize: 15, fontWeight:'bold'}}>Next</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{justifyContent:'center', alignItems: "center", marginBottom: 20,}}>
+        <Text style={{}}>
+          {props.pageCurrent} of {props.total}
+        </Text>
+      </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  headerStyle: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+});
 export default Card;

@@ -39,7 +39,7 @@ const ProductDetail = (props) => {
             elevation: 5,
             display: "flex",
             width: "95%",
-            height: 350,
+            height: 'auto',
             margin: 10,
             padding: 5,
           }}

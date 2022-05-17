@@ -1,7 +1,7 @@
-export const getDataAction = () => (dispatch) => {
+export const getDataAction = (page) => (dispatch) => {
     return new Promise(async (resolve) => {
       try {
-      const data = await fetch(`https://dummyjson.com/products`, {
+      const data = await fetch(`https://dummyjson.com/products?limit=5&skip=${page}`, {
         method: "GET",
       });
       const hasil = await data.json();
