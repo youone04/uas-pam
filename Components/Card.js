@@ -1,4 +1,4 @@
-import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet,ScrollView } from "react-native";
 
 const Card = (props) => {
   const handleDetail = (id) => {
@@ -9,6 +9,7 @@ const Card = (props) => {
 
   return (
     <>
+    <ScrollView>
       {props.data.products.map((products, i) => {
         return (
           <View
@@ -58,6 +59,7 @@ const Card = (props) => {
           </View>
         );
       })}
+      </ScrollView>
 
       <View style={styles.headerStyle}>
         {/* <View></View> */}
